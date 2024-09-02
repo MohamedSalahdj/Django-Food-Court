@@ -24,11 +24,10 @@
         <a href="#" class="logo"><i class="fa fa-utensils"></i>Foodies.</a>
         <nav class="navbar">
             <a class="active" href="./home.html">Home</a>
-            <a href="./dishes.html">dishes</a>
+            <a href="{% url 'restaurant:list_restaurant' %}">Restaurants</a>
             <a href="#" onclick="openAbout()">about</a>
             <a href="./contact.html" >Contact us</a>
             
-            <a class="feed" id="feedback">feedback</a>
             <a href="#">Orders</a>
         </nav>
         <div class="icons">
@@ -195,9 +194,7 @@
         document.querySelector('#close1').onclick=() => {
             document.querySelector('#search-form').classList.toggle('active');
         }
-        document.querySelector("#feedback").onclick=() =>{
-        document.querySelector("#co1").classList.toggle("active");
-    }
+        
         document.querySelector("#close").onclick=() =>{
         document.querySelector("#co1").classList.toggle("active");
     }
@@ -237,7 +234,8 @@
         confirm("Order Now on Whatsapp click ok to continue");
     }
     </script>
-    
+    {% block jscode %}
+    {% endblock jscode %}
     <!--JavaScript ends -->
 </body>
 </html>
