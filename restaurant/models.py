@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
+
 
 restaurant_status = (
     ("Open", "Open"),
@@ -7,12 +10,13 @@ restaurant_status = (
 )
 
 class Restaurant(models.Model):
-    restaurant_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    description = models.TextField(max_length=350)
-    status = models.CharField(max_length=6, choices=restaurant_status, default="Open")
-    slug = models.SlugField(blank=True)
-    categories = models.ManyToManyField('Category', related_name='restaurant_categories')
+    restaurant_id = models.AutoField(_("Restaurant ID"), primary_key=True)
+    name = models.CharField(_("Name"), max_length=100)
+    description = models.TextField(_("Description"), max_length=350)
+    status = models.CharField(_("Status"), max_length=6, choices=restaurant_status, default="Open")
+    slug = models.SlugField(_("Slug"), blank=True)
+    categories = models.ManyToManyField('Category', verbose_name=_("Category"), related_name='restaurant_categories')
+    image = models.ImageField(_("Restaurant Image"), upload_to="Restaurants")
 
     def __str__(self):
         return self.name
@@ -23,9 +27,9 @@ class Restaurant(models.Model):
 
 
 class Category(models.Model):
-    category_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=150)
-    slug = models.SlugField(blank=True)
+    category_id = models.AutoField(_("Category ID"), primary_key=True)
+    name = models.CharField(_("Name"), max_length=150)
+    slug = models.SlugField(_("Slug"), blank=True)
 
     def __str__(self):
         return self.name
@@ -33,5 +37,30 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
+
+
+class Dish(models.Model):
+    dish_id = models.BigAutoField(_("Dish ID"), primary_key=True)
+    name = models.CharField(_("Name"), max_length=150)
+    description = models.TextField(_("Description"), max_length=750)
+    price =models.DecimalField(_("Price"), max_digits=10, decimal_places=2)
+    image = models.ImageField(_("Dish Image"), upload_to="Dish")
+    created_at = models.DateTimeField(_("Created at"), default=timezone.now)
+    updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
+    restaurant = models.ForeignKey(Restaurant, verbose_name=_("Restaurant"), on_delete=models.CASCADE, related_name="dish_restaurant")
+    category = models.ForeignKey(Category, verbose_name=_("Category"), on_delete=models.CASCADE, related_name="dish_category")
+    slug = models.SlugField(_("Slug"), blank=True)
+
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Dish, self).save(*args, **kwargs)
+
+
+
+
 
 
