@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
 
     # Project-app
-    'product.apps.ProductConfig', 
+    'restaurant.apps.RestaurantConfig'
     
 ]
 

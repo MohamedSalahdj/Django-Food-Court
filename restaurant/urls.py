@@ -1,6 +1,7 @@
 from django.urls import path
 
-app_name = "product.apps.ProductConfig"
+
+app_name = 'restaurant.apps.RestaurantConfig'
 
 urlpatterns = [
     
