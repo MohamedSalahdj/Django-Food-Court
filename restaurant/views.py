@@ -24,3 +24,13 @@ class DetailRestaurants(ListView):
         context['restaurant'] = restaurant
         context['categories'] = categories
         return context
+
+
+def dish_details(request, restaurant_slug, slug):
+    dish = get_object_or_404(Dish, slug=slug)
+
+    context = {
+        'dish': dish,
+    }
+
+    return render(request, 'restaurant/dish_detail.html', context) 
