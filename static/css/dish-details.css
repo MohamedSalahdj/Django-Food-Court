@@ -1,0 +1,104 @@
+
+.dish-details-container {
+    max-width: 85%;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+.dish-content {
+    display: flex;
+    gap: 100px;
+    /* justify-content: space-between; */
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+.dish-info-container {
+    flex: 1;
+}
+.dish-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.dish-header h1 {
+    font-size: 2em;
+    color: #333;
+    margin: 0;
+}
+.dish-price {
+    font-size: 1.5em;
+    color: #ff5722;
+}
+.dish-info-category-title {
+    margin-bottom: 15px;
+    color: #666;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.dish-info-category-title-content {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+
+.dish-description {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+}
+.dish-ingredients {
+    margin-top: 15px;
+    color: #444;
+}
+.dish-ingredients ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+.dish-restaurant-info {
+    font-style: italic;
+    color: #999;
+    margin-top: 20px;
+}
+.dish-image {
+    width: 300px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.add-to-cart-button {
+    display: inline-block;
+    background-color: #ff5722;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    text-decoration: none;
+    margin-top: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.add-to-cart-button:hover {
+    background-color: #e64a19;
+}
+.reviews-section {
+    margin-top: 40px;
+}
+.review {
+    border-top: 1px solid #e0e0e0;
+    padding: 15px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+.review-author {
+    font-weight: bold;
+    color: #333;
+}
+.review-text {
+    margin-top: 5px;
+}

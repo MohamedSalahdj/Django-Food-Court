@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>{{ dish.restaurant }} - {{ dish.name }}</title>
+{% endblock title %}
+
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/dish-details.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+{% endblock cssfiles %}
+
+{% block body %}
+    <div class="dish-details-container">
+        <div class="dish-content">
+            <!-- Dish Image on the Left -->
+            <img src="{{ dish.image.url }}" alt="{{ dish.name }}" class="dish-image">
+
+            <!-- Dish Info on the Right -->
+            <div class="dish-info-container">
+                <div class="dish-header">
+                    <h1>{{ dish.name }}</h1>
+                    <span class="dish-price">${{ dish.price }}</span>
+                </div>
+                <p class="dish-info-category-title">Category: <span class="dish-info-category-title-content ">{{ dish.category }}</span> </p>
+                <p class="dish-description">{{ dish.description }}</p>
+
+                <!--##To do Ingredients Section -->
+                {% comment %} <div class="dish-ingredients">
+                    <h3>Ingredients</h3>
+                    <ul>
+                        {% for ingredient in dish.ingredients %}
+                            <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                </div> {% endcomment %}
+
+                <!-- Restaurant Info -->
+                <p class="dish-restaurant-info">Available at: {{ dish.restaurant.name }}</p>
+
+                <!-- Add to Cart Button -->
+                <a href="#" class="add-to-cart-button">Add to Cart</a>
+            </div>            
+        </div>
+
+        
+    </div>
+{% endblock body %}
+
+{% block jscode %}
+{% endblock jscode %}

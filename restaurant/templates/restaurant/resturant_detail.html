@@ -55,6 +55,7 @@ src="https://www.yout111ube.com/embed/zc8DJMgkQR4?autoplay=1&mute=1&loop=1&playl
             </div>
             <span>{{dish.price}}</span>
             <br>
+            <a href="{% url 'restaurant:dish_details' dish.restaurant.slug dish.slug %}" class="btn">Show</a>
             <a href="#" class="btn">Add to cart</a>
             
         </div>
@@ -62,7 +63,6 @@ src="https://www.yout111ube.com/embed/zc8DJMgkQR4?autoplay=1&mute=1&loop=1&playl
     </div>
 </section>
 {%endfor%}
-
 
 <div class="arrow">
     <a href="#home"><i class="fas fa-arrow-up"></i></a>
