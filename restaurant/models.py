@@ -2,7 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.contrib.auth.models import User
 
 restaurant_status = (
     ("Open", "Open"),
@@ -60,7 +61,15 @@ class Dish(models.Model):
         super(Dish, self).save(*args, **kwargs)
 
 
+class Review(models.Model):
+    review = models.TextField(_("Review"), max_length=350)
+    rate = models.PositiveSmallIntegerField(_("Rate"),
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
+    user = models.ForeignKey(User, verbose_name=_("User"), on_delete=models.CASCADE, related_name="user_reviews")
+    dish = models.ForeignKey(Dish, verbose_name=_("Dish"), on_delete=models.CASCADE, related_name="dish_reviews")
+    created_at = models.DateTimeField(_("Created at"), default=timezone.now)
 
-
+    def __str__(self):
+        return f"{self.user} - {self.rate} - {self.review}"
 
 
