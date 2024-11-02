@@ -20,7 +20,7 @@
     <div class="box-container">
         {% for restaurant in object_list %}
             <div class="box">
-                <a href="#"><img src="{{restaurant.image.url}}"></a>
+                <a href="{% url 'restaurant:detail_restaurant' restaurant.slug %}"><img src="{{restaurant.image.url}}"></a>
                 <h3>{{restaurant}}</h3>
                 <div class="stars">
                     <i class="fas fa-star"></i>
